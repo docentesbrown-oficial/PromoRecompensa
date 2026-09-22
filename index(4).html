@@ -1,0 +1,1100 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#24496e">
+  <meta name="description" content="Encontrá dos descuentos iguales y ganá tu premio en Docentes Brown.">
+  <title>El desafío de los descuentos | Docentes Brown</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2324496e'/%3E%3Cpath d='M15 18c8-2 13 0 17 5 4-5 9-7 17-5v29c-8-2-13 0-17 5-4-5-9-7-17-5V18Z' fill='none' stroke='%23f3efdc' stroke-width='4' stroke-linejoin='round'/%3E%3Cpath d='M32 23v29' stroke='%23da6863' stroke-width='4'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --navy: #24496e;
+      --navy-deep: #17324d;
+      --navy-soft: #dbe7f1;
+      --cream: #f3efdc;
+      --cream-light: #fffdf5;
+      --coral: #da6863;
+      --coral-deep: #b84f4b;
+      --ink: #183047;
+      --muted: #637384;
+      --white: #ffffff;
+      --line: rgba(36, 73, 110, 0.16);
+      --shadow: 0 24px 70px rgba(23, 50, 77, 0.16);
+      --card-shadow: 0 10px 0 rgba(23, 50, 77, 0.13), 0 16px 28px rgba(23, 50, 77, 0.16);
+      font-family: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--cream);
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 7%, rgba(218, 104, 99, 0.20), transparent 27rem),
+        radial-gradient(circle at 94% 92%, rgba(36, 73, 110, 0.18), transparent 30rem),
+        var(--cream);
+      overflow-x: hidden;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .page {
+      width: min(100% - 28px, 1040px);
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 28px 0 34px;
+      display: grid;
+      align-content: center;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--navy);
+    }
+
+    .brand-mark {
+      width: 48px;
+      aspect-ratio: 1;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: var(--navy);
+      color: var(--cream);
+      font-family: "League Spartan", "Arial Black", sans-serif;
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      box-shadow: 0 8px 22px rgba(36, 73, 110, 0.20);
+    }
+
+    .brand-name {
+      display: grid;
+      line-height: 1.04;
+      font-family: "League Spartan", "Arial Black", sans-serif;
+      font-size: 1.08rem;
+      font-weight: 900;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-name small {
+      margin-top: 4px;
+      color: var(--muted);
+      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .game-shell {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(240px, 0.82fr) minmax(340px, 1.18fr);
+      gap: clamp(26px, 5vw, 64px);
+      align-items: center;
+      padding: clamp(24px, 4.8vw, 58px);
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      border-radius: 38px;
+      background: rgba(255, 253, 245, 0.84);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .game-shell::after {
+      content: "";
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      right: -105px;
+      top: -105px;
+      border: 34px solid rgba(218, 104, 99, 0.10);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .intro {
+      position: relative;
+      z-index: 1;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      margin: 0 0 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--coral-deep);
+      background: rgba(218, 104, 99, 0.13);
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--navy-deep);
+      font-family: "League Spartan", "Arial Black", sans-serif;
+      font-size: clamp(2.2rem, 5.6vw, 4.6rem);
+      line-height: 0.92;
+      letter-spacing: -0.055em;
+      text-wrap: balance;
+    }
+
+    .lead {
+      margin: 20px 0 0;
+      max-width: 35ch;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .prize-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .prize-list span {
+      min-width: 48px;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--navy);
+      background: rgba(255, 255, 255, 0.66);
+      font-size: 0.82rem;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .play-area {
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+    }
+
+    .status {
+      min-height: 44px;
+      margin: 0 0 15px;
+      padding: 11px 14px;
+      border: 1px solid rgba(36, 73, 110, 0.12);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      color: var(--navy);
+      background: rgba(219, 231, 241, 0.58);
+      font-size: 0.91rem;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--coral);
+      box-shadow: 0 0 0 5px rgba(218, 104, 99, 0.14);
+    }
+
+    .cards-grid {
+      width: min(100%, 520px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(10px, 2.2vw, 16px);
+      perspective: 1100px;
+    }
+
+    .memory-card {
+      position: relative;
+      aspect-ratio: 0.78;
+      padding: 0;
+      border: 0;
+      border-radius: clamp(15px, 2.5vw, 23px);
+      background: transparent;
+      cursor: pointer;
+      perspective: 900px;
+      outline: none;
+    }
+
+    .memory-card:focus-visible {
+      border-radius: 24px;
+      box-shadow: 0 0 0 4px var(--cream-light), 0 0 0 8px var(--coral);
+    }
+
+    .memory-card:disabled {
+      cursor: default;
+    }
+
+    .card-inner {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      transform-style: preserve-3d;
+      transition: transform 520ms cubic-bezier(0.2, 0.72, 0.2, 1);
+      box-shadow: var(--card-shadow);
+    }
+
+    .memory-card:not(.is-flipped):not(:disabled):hover .card-inner {
+      transform: translateY(-4px) rotate(-1deg);
+    }
+
+    .memory-card.is-flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      overflow: hidden;
+    }
+
+    .card-back {
+      display: grid;
+      place-items: center;
+      color: var(--cream);
+      background:
+        linear-gradient(135deg, transparent 0 42%, rgba(255,255,255,.07) 42% 58%, transparent 58%),
+        var(--navy);
+      border: 2px solid rgba(255, 255, 255, 0.20);
+    }
+
+    .card-back::before,
+    .card-back::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(243, 239, 220, 0.22);
+    }
+
+    .card-back::before {
+      width: 74%;
+      aspect-ratio: 1;
+    }
+
+    .card-back::after {
+      width: 52%;
+      aspect-ratio: 1;
+    }
+
+    .question {
+      position: relative;
+      z-index: 1;
+      font-family: "League Spartan", "Arial Black", sans-serif;
+      font-size: clamp(2rem, 7vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .card-signature {
+      position: absolute;
+      right: 11px;
+      bottom: 9px;
+      color: rgba(243, 239, 220, 0.72);
+      font-size: clamp(0.52rem, 1.4vw, 0.7rem);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .card-front {
+      transform: rotateY(180deg);
+      display: grid;
+      place-items: center;
+      align-content: center;
+      gap: 6px;
+      color: var(--navy-deep);
+      background: var(--white);
+      border: 2px solid rgba(36, 73, 110, 0.12);
+    }
+
+    .card-front::before {
+      content: "";
+      position: absolute;
+      width: 90%;
+      height: 90%;
+      border: 1px dashed rgba(36, 73, 110, 0.18);
+      border-radius: calc(clamp(15px, 2.5vw, 23px) - 6px);
+    }
+
+    .discount-value {
+      position: relative;
+      z-index: 1;
+      font-family: "League Spartan", "Arial Black", sans-serif;
+      font-size: clamp(1.85rem, 5vw, 3.25rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+    }
+
+    .discount-label {
+      position: relative;
+      z-index: 1;
+      color: var(--coral-deep);
+      font-size: clamp(0.56rem, 1.5vw, 0.72rem);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .memory-card.is-joker .card-front {
+      color: var(--cream);
+      background:
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,.16), transparent 32%),
+        var(--coral);
+      border-color: rgba(255, 255, 255, 0.38);
+    }
+
+    .memory-card.is-joker .card-front::before {
+      border-color: rgba(255, 255, 255, 0.38);
+    }
+
+    .joker-star {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(2rem, 6vw, 3.6rem);
+      line-height: 0.9;
+    }
+
+    .memory-card.is-joker .discount-label {
+      color: var(--cream);
+    }
+
+    .participation-note {
+      margin: 15px 0 0;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    dialog {
+      width: min(92vw, 490px);
+      padding: 0;
+      border: 0;
+      border-radius: 30px;
+      color: var(--ink);
+      background: transparent;
+      box-shadow: 0 34px 110px rgba(15, 34, 52, 0.38);
+      overflow: visible;
+    }
+
+    dialog::backdrop {
+      background: rgba(18, 40, 60, 0.72);
+      backdrop-filter: blur(8px);
+    }
+
+    .win-card {
+      position: relative;
+      padding: clamp(29px, 7vw, 48px);
+      border: 2px solid rgba(255, 255, 255, 0.76);
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 100% 0, rgba(218, 104, 99, 0.17), transparent 16rem),
+        var(--cream-light);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .win-card::before {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      left: -92px;
+      bottom: -92px;
+      border: 26px solid rgba(36, 73, 110, 0.10);
+      border-radius: 50%;
+    }
+
+    .win-badge {
+      width: 54px;
+      aspect-ratio: 1;
+      margin: 0 auto 16px;
+      display: grid;
+      place-items: center;
+      border-radius: 17px;
+      color: var(--cream);
+      background: var(--coral);
+      font-size: 1.5rem;
+      transform: rotate(-6deg);
+      box-shadow: 0 10px 24px rgba(218, 104, 99, 0.28);
+    }
+
+    .win-kicker {
+      margin: 0;
+      color: var(--coral-deep);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .win-card h2 {
+      margin: 10px 0 0;
+      color: var(--navy-deep);
+      font-family: "League Spartan", "Arial Black", sans-serif;
+      font-size: clamp(2rem, 8vw, 3.25rem);
+      line-height: 0.96;
+      letter-spacing: -0.045em;
+    }
+
+    .win-value {
+      display: block;
+      margin: 18px 0 8px;
+      color: var(--coral);
+      font-family: "League Spartan", "Arial Black", sans-serif;
+      font-size: clamp(4.1rem, 18vw, 7rem);
+      font-weight: 900;
+      line-height: 0.78;
+      letter-spacing: -0.07em;
+    }
+
+    .win-copy {
+      max-width: 35ch;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .whatsapp-button {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: 56px;
+      margin-top: 24px;
+      padding: 15px 18px;
+      border: 0;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #ffffff;
+      background: #168b45;
+      font-size: 1rem;
+      font-weight: 900;
+      line-height: 1.2;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(22, 139, 69, 0.25);
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .whatsapp-button:hover {
+      background: #11753a;
+      transform: translateY(-2px);
+    }
+
+    .whatsapp-button:focus-visible {
+      outline: 4px solid rgba(22, 139, 69, 0.28);
+      outline-offset: 4px;
+    }
+
+    .wa-icon {
+      width: 21px;
+      height: 21px;
+      fill: currentColor;
+    }
+
+    .dialog-note {
+      margin: 13px 0 0;
+      color: var(--muted);
+      font-size: 0.74rem;
+      line-height: 1.4;
+    }
+
+    .confetti {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      top: -28px;
+      width: 10px;
+      height: 18px;
+      border-radius: 3px;
+      animation: confetti-fall 2.3s cubic-bezier(.2,.75,.35,1) forwards;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translate3d(0, -5vh, 0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate3d(var(--drift), 112vh, 0) rotate(var(--spin));
+        opacity: 0.84;
+      }
+    }
+
+    .noscript {
+      width: min(100% - 32px, 660px);
+      margin: 30px auto;
+      padding: 20px;
+      border-radius: 16px;
+      color: var(--navy-deep);
+      background: var(--white);
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(100% - 18px, 580px);
+        padding: 18px 0 24px;
+        align-content: start;
+        gap: 14px;
+      }
+
+      .brand {
+        justify-content: flex-start;
+        padding: 0 8px;
+      }
+
+      .brand-mark {
+        width: 42px;
+        border-radius: 13px;
+      }
+
+      .game-shell {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        padding: 24px 16px 22px;
+        border-radius: 28px;
+      }
+
+      .intro {
+        text-align: center;
+        align-items: center;
+      }
+
+      h1 {
+        max-width: 11ch;
+        font-size: clamp(2.3rem, 12vw, 3.35rem);
+      }
+
+      .lead {
+        margin-top: 14px;
+        max-width: 38ch;
+        font-size: 0.93rem;
+      }
+
+      .prize-list {
+        margin-top: 15px;
+        justify-content: center;
+      }
+
+      .cards-grid {
+        width: min(100%, 430px);
+        gap: 10px;
+      }
+
+      .status {
+        margin-bottom: 12px;
+      }
+
+      .participation-note {
+        margin-top: 12px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .game-shell {
+        padding-inline: 12px;
+      }
+
+      .cards-grid {
+        gap: 8px;
+      }
+
+      .memory-card {
+        border-radius: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .memory-card:not(.is-flipped):not(:disabled):hover .card-inner {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="brand" aria-label="Docentes Brown">
+      <span class="brand-mark" aria-hidden="true">DB</span>
+      <span class="brand-name">
+        Docentes Brown
+        <small>Consultora Educativa</small>
+      </span>
+    </header>
+
+    <section class="game-shell" aria-labelledby="game-title">
+      <div class="intro">
+        <p class="eyebrow">Beneficio especial</p>
+        <h1 id="game-title">Encontrá el par. Ganá tu descuento.</h1>
+        <p class="lead">
+          Da vuelta las cartas: todas quedan abiertas. Apenas aparezcan dos porcentajes iguales, ese descuento es tuyo para usar en nuestra tienda o talleres.
+        </p>
+        <div class="prize-list" aria-label="Descuentos disponibles">
+          <span>10%</span>
+          <span>15%</span>
+          <span>20%</span>
+          <span>25%</span>
+        </div>
+      </div>
+
+      <div class="play-area">
+        <p class="status" id="game-status" aria-live="polite">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="status-text">Elegí la primera carta.</span>
+        </p>
+        <div class="cards-grid" id="cards-grid" aria-label="Juego de nueve cartas"></div>
+        <p class="participation-note">
+          Todas las cartas descubiertas quedan visibles. Tenés una participación por navegador y dispositivo.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="win-dialog" aria-labelledby="win-title" aria-describedby="win-copy">
+    <div class="win-card">
+      <div class="win-badge" aria-hidden="true">★</div>
+      <p class="win-kicker" id="win-kicker">¡Encontraste el par!</p>
+      <h2 id="win-title">Felicitaciones</h2>
+      <strong class="win-value" id="win-value">20%</strong>
+      <p class="win-copy" id="win-copy">
+        Ganaste este descuento para usar en nuestra tienda o talleres.
+      </p>
+      <button class="whatsapp-button" id="continue-button" type="button">
+        <svg class="wa-icon" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M16.04 3.2A12.64 12.64 0 0 0 5.16 22.25L3.2 28.8l6.72-1.91a12.65 12.65 0 1 0 6.12-23.69Zm0 22.96c-1.9 0-3.76-.52-5.37-1.5l-.38-.23-3.99 1.14 1.16-3.89-.25-.4a10.3 10.3 0 1 1 8.83 4.88Zm5.65-7.72c-.31-.15-1.83-.9-2.11-1.01-.28-.1-.49-.15-.7.16-.2.31-.8 1.01-.98 1.22-.18.2-.36.23-.67.08-.31-.16-1.3-.48-2.48-1.53a9.3 9.3 0 0 1-1.72-2.14c-.18-.31-.02-.48.13-.63.14-.14.31-.36.47-.54.15-.18.2-.31.31-.52.1-.2.05-.39-.03-.54-.08-.16-.7-1.68-.95-2.3-.25-.6-.5-.52-.7-.53h-.59c-.2 0-.54.08-.82.39-.28.31-1.08 1.05-1.08 2.57s1.11 2.98 1.26 3.19c.16.2 2.18 3.33 5.28 4.67.74.32 1.31.51 1.76.65.74.23 1.41.2 1.94.12.59-.09 1.83-.75 2.08-1.47.26-.72.26-1.34.18-1.47-.07-.13-.28-.2-.59-.36Z"/>
+        </svg>
+        <span>Continuar por WhatsApp</span>
+      </button>
+      <p class="dialog-note">Tu mensaje llevará el porcentaje obtenido.</p>
+    </div>
+  </dialog>
+
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <noscript>
+    <p class="noscript">Para jugar necesitás activar JavaScript en tu navegador.</p>
+  </noscript>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const STORAGE_KEY = "docentes_brown_descuentos_v2";
+      const COOKIE_KEY = "db_descuentos_v2";
+      const WHATSAPP_NUMBER = "5491135585647";
+      const CARD_VALUES = ["10", "10", "15", "15", "20", "20", "25", "25", "joker"];
+      const VALID_VALUES = new Set(CARD_VALUES);
+
+      const grid = document.getElementById("cards-grid");
+      const statusText = document.getElementById("status-text");
+      const dialog = document.getElementById("win-dialog");
+      const winKicker = document.getElementById("win-kicker");
+      const winValue = document.getElementById("win-value");
+      const winCopy = document.getElementById("win-copy");
+      const continueButton = document.getElementById("continue-button");
+      const confetti = document.getElementById("confetti");
+
+      let state = loadState();
+      function randomNumber() {
+        if (window.crypto && window.crypto.getRandomValues) {
+          const value = new Uint32Array(1);
+          window.crypto.getRandomValues(value);
+          return value[0] / 4294967296;
+        }
+        return Math.random();
+      }
+
+      function shuffle(items) {
+        const result = [...items];
+        for (let index = result.length - 1; index > 0; index -= 1) {
+          const other = Math.floor(randomNumber() * (index + 1));
+          [result[index], result[other]] = [result[other], result[index]];
+        }
+        return result;
+      }
+
+      function newState() {
+        return {
+          version: 1,
+          arrangement: shuffle(CARD_VALUES),
+          openIndices: [],
+          jokerUsed: false,
+          started: false,
+          completed: false,
+          prize: null,
+          completedAt: null
+        };
+      }
+
+      function hasValidArrangement(arrangement) {
+        if (!Array.isArray(arrangement) || arrangement.length !== CARD_VALUES.length) return false;
+        if (!arrangement.every((value) => VALID_VALUES.has(value))) return false;
+        return [...arrangement].sort().join("|") === [...CARD_VALUES].sort().join("|");
+      }
+
+      function readCookiePrize() {
+        const prefix = COOKIE_KEY + "=";
+        const entry = document.cookie
+          .split(";")
+          .map((part) => part.trim())
+          .find((part) => part.startsWith(prefix));
+
+        if (!entry) return null;
+        const value = decodeURIComponent(entry.slice(prefix.length));
+        return ["10", "15", "20", "25"].includes(value) ? value : "played";
+      }
+
+      function loadState() {
+        const cookiePrize = readCookiePrize();
+
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) {
+            const saved = JSON.parse(raw);
+            if (saved && saved.version === 1 && hasValidArrangement(saved.arrangement)) {
+              saved.openIndices = Array.isArray(saved.openIndices)
+                ? [...new Set(saved.openIndices.filter(
+                    (index) => Number.isInteger(index) && index >= 0 && index < 9
+                  ))]
+                : [];
+
+              if (cookiePrize && !saved.completed) {
+                saved.completed = true;
+                saved.prize = cookiePrize === "played" ? null : cookiePrize;
+              }
+              return saved;
+            }
+          }
+        } catch (error) {
+          // If browser storage is unavailable, the cookie still preserves a finished play.
+        }
+
+        if (cookiePrize) {
+          const playedState = newState();
+          playedState.started = true;
+          playedState.completed = true;
+          playedState.prize = cookiePrize === "played" ? null : cookiePrize;
+          return playedState;
+        }
+
+        return newState();
+      }
+
+      function saveState() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        } catch (error) {
+          // The game remains playable if localStorage is blocked.
+        }
+
+        if (state.completed) {
+          const cookieValue = state.prize || "played";
+          document.cookie = COOKIE_KEY + "=" + encodeURIComponent(cookieValue)
+            + "; Max-Age=34560000; Path=/; SameSite=Lax";
+        }
+      }
+
+      function cardLabel(value, index, isFlipped) {
+        if (!isFlipped) return "Carta " + (index + 1) + ", boca abajo";
+        if (value === "joker") return "Carta " + (index + 1) + ": comodín";
+        return "Carta " + (index + 1) + ": " + value + " por ciento de descuento";
+      }
+
+      function renderCards() {
+        grid.innerHTML = "";
+
+        state.arrangement.forEach((value, index) => {
+          const isOpen = state.openIndices.includes(index);
+          const isJokerUsed = value === "joker" && state.jokerUsed;
+          const isFlipped = isOpen || isJokerUsed;
+          const card = document.createElement("button");
+          card.type = "button";
+          card.className = "memory-card";
+          card.dataset.index = String(index);
+          card.setAttribute("aria-label", cardLabel(value, index, isFlipped));
+          card.setAttribute("aria-pressed", String(isFlipped));
+
+          if (isFlipped) card.classList.add("is-flipped");
+          if (value === "joker") card.classList.add("is-joker");
+          card.disabled = Boolean(state.completed || isJokerUsed || isOpen);
+
+          const frontContent = value === "joker"
+            ? '<span class="joker-star" aria-hidden="true">★</span><span class="discount-label">Comodín</span>'
+            : '<span class="discount-value">' + value + '%</span><span class="discount-label">Descuento</span>';
+
+          card.innerHTML = [
+            '<span class="card-inner">',
+              '<span class="card-face card-back" aria-hidden="true">',
+                '<span class="question">?</span>',
+                '<span class="card-signature">DB</span>',
+              '</span>',
+              '<span class="card-face card-front" aria-hidden="true">',
+                frontContent,
+              '</span>',
+            '</span>'
+          ].join("");
+
+          card.addEventListener("click", () => selectCard(index));
+          grid.appendChild(card);
+        });
+      }
+
+      function updateStatus(message) {
+        statusText.textContent = message;
+      }
+
+      function selectCard(index) {
+        if (state.completed || state.openIndices.includes(index)) return;
+
+        const value = state.arrangement[index];
+        state.started = true;
+
+        if (value === "joker") {
+          if (state.jokerUsed) return;
+          state.jokerUsed = true;
+          saveState();
+          renderCards();
+          updateStatus("¡Comodín! Queda abierto y tenés otra elección.");
+          return;
+        }
+
+        state.openIndices.push(index);
+        const matchingIndex = state.openIndices
+          .slice(0, -1)
+          .find((openIndex) => state.arrangement[openIndex] === value);
+
+        if (matchingIndex !== undefined) {
+          state.completed = true;
+          state.prize = value;
+          state.completedAt = new Date().toISOString();
+          saveState();
+          updateStatus("¡Encontraste el par!");
+          renderCards();
+          window.setTimeout(() => showWin(false), 420);
+          return;
+        }
+
+        saveState();
+        renderCards();
+        updateStatus("La carta queda abierta. Seguí buscando un porcentaje repetido.");
+      }
+
+      function buildWhatsAppMessage() {
+        if (state.prize) {
+          return "Hola, jugué al desafío de Docentes Brown y gané un "
+            + state.prize
+            + "% de descuento para usar en la tienda o talleres. Quiero canjear mi premio.";
+        }
+        return "Hola, ya participé del desafío de descuentos de Docentes Brown y quiero consultar por mi premio.";
+      }
+
+      function continueToWhatsApp() {
+        const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(buildWhatsAppMessage());
+        window.location.assign(url);
+      }
+
+      function visibleGameState() {
+        return {
+          status: state.completed ? "completed" : "playing",
+          jokerUsed: Boolean(state.jokerUsed),
+          cards: state.arrangement.map((value, index) => {
+            const visible = state.openIndices.includes(index) || (value === "joker" && state.jokerUsed);
+            return {
+              position: index + 1,
+              face: visible ? value : "hidden"
+            };
+          }),
+          prize: state.completed ? state.prize : null
+        };
+      }
+
+      function registerWebMcpTools() {
+        const context = document.modelContext;
+        if (!context || typeof context.registerTool !== "function") return;
+
+        const lifecycle = new AbortController();
+        const register = (tool) => {
+          try {
+            Promise.resolve(
+              context.registerTool(tool, { signal: lifecycle.signal })
+            ).catch(() => {});
+          } catch (error) {
+            // WebMCP is optional; the visible game remains the source of truth.
+          }
+        };
+
+        register({
+          name: "read_discount_game",
+          title: "Consultar el juego",
+          description: "Consulta el estado visible actual del juego de descuentos sin revelar cartas ocultas.",
+          inputSchema: {
+            type: "object",
+            properties: {},
+            additionalProperties: false
+          },
+          annotations: {
+            readOnlyHint: true,
+            untrustedContentHint: false
+          },
+          execute() {
+            return visibleGameState();
+          }
+        });
+
+        register({
+          name: "reveal_discount_card",
+          title: "Dar vuelta una carta",
+          description: "Da vuelta una carta disponible del juego usando su posición, del 1 al 9.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              position: {
+                type: "integer",
+                minimum: 1,
+                maximum: 9,
+                description: "Posición de la carta, numerada del 1 al 9."
+              }
+            },
+            required: ["position"],
+            additionalProperties: false
+          },
+          annotations: {
+            readOnlyHint: false,
+            untrustedContentHint: false
+          },
+          async execute(input) {
+            if (!input || !Number.isInteger(input.position) || input.position < 1 || input.position > 9) {
+              throw new Error("La posición debe ser un número entero del 1 al 9.");
+            }
+            if (state.completed) {
+              throw new Error("Esta participación ya finalizó.");
+            }
+            const index = input.position - 1;
+            const value = state.arrangement[index];
+            const unavailable = state.openIndices.includes(index) || (value === "joker" && state.jokerUsed);
+            if (unavailable) {
+              throw new Error("Esa carta ya está descubierta. Elegí otra.");
+            }
+
+            selectCard(index);
+            const waitTime = state.completed ? 520 : 80;
+            await new Promise((resolve) => window.setTimeout(resolve, waitTime));
+            return visibleGameState();
+          }
+        });
+
+        window.addEventListener("pagehide", () => lifecycle.abort(), { once: true });
+      }
+
+      function showWin(isReturning) {
+        if (state.prize) {
+          winValue.textContent = state.prize + "%";
+          winKicker.textContent = isReturning ? "Tu participación ya fue registrada" : "¡Encontraste el par!";
+          winCopy.textContent = isReturning
+            ? "Ya jugaste y ganaste este descuento. Podés continuar a WhatsApp para canjearlo."
+            : "Ganaste este descuento para usar en nuestra tienda o talleres.";
+        } else {
+          winValue.textContent = "✓";
+          winKicker.textContent = "Participación registrada";
+          winCopy.textContent = "Ya utilizaste tu oportunidad en este navegador y dispositivo.";
+        }
+
+        if (!dialog.open) dialog.showModal();
+        window.setTimeout(() => continueButton.focus(), 60);
+        if (!isReturning && state.prize) launchConfetti();
+      }
+
+      function launchConfetti() {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+        const colors = ["#24496e", "#da6863", "#f3efdc", "#ffffff"];
+        confetti.innerHTML = "";
+
+        for (let index = 0; index < 54; index += 1) {
+          const piece = document.createElement("span");
+          piece.className = "confetti-piece";
+          piece.style.left = Math.round(randomNumber() * 100) + "%";
+          piece.style.background = colors[index % colors.length];
+          piece.style.animationDelay = (randomNumber() * 0.65).toFixed(2) + "s";
+          piece.style.animationDuration = (1.75 + randomNumber() * 1.2).toFixed(2) + "s";
+          piece.style.setProperty("--drift", ((randomNumber() - 0.5) * 190).toFixed(0) + "px");
+          piece.style.setProperty("--spin", (360 + randomNumber() * 720).toFixed(0) + "deg");
+          confetti.appendChild(piece);
+        }
+
+        window.setTimeout(() => {
+          confetti.innerHTML = "";
+        }, 3500);
+      }
+
+      continueButton.addEventListener("click", continueToWhatsApp);
+      dialog.addEventListener("cancel", (event) => {
+        event.preventDefault();
+      });
+
+      renderCards();
+      registerWebMcpTools();
+
+      if (state.completed) {
+        updateStatus("Esta participación ya fue utilizada.");
+        window.setTimeout(() => showWin(true), 180);
+      } else if (state.openIndices.length > 0) {
+        updateStatus("Las cartas quedan abiertas. Seguí hasta repetir un porcentaje.");
+      } else if (state.jokerUsed) {
+        updateStatus("Ya usaste el comodín. Seguís jugando.");
+      }
+    })();
+  </script>
+</body>
+</html>
